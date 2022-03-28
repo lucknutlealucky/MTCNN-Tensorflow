@@ -38,8 +38,8 @@ sys.path.append('../')
 def main(args):
 
     net = args.input_size
-    anno_file = 'wider_face_train.txt'
-    im_dir = 'WIDER_train/images'
+    anno_file = '/content/MTCNN-Tensorflow/prepare_data/wider_face_train.txt'
+    im_dir = '/content/MTCNN-Tensorflow/prepare_data/WIDER_train/images'
 
     save_dir = 'native_' + str(net)
     pos_save_dir = save_dir + '/positive'
@@ -71,7 +71,7 @@ def main(args):
         im_path = annotation[0]
         bbox = list(map(float, annotation[1:]))
         boxes = np.array(bbox, dtype=np.float32).reshape(-1, 4)
-        img = cv2.imread(os.path.join(im_dir, im_path + '.jpg'))
+        img = cv2.imread(os.path.join(im_dir, im_path))
         idx += 1
         if idx % 10000 == 0:
             print(idx, 'images done')
