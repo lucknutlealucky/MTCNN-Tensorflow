@@ -29,7 +29,8 @@ import sys
 import random
 
 import cv2
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 import numpy as np
 import numpy.random as npr
 
@@ -81,7 +82,7 @@ def main():
 
     print('\n'+'positive random cropped')
     cur_ = 0
-    pos_keep = npr.choice(len(pos), size=100000, replace=False)
+    pos_keep = npr.choice(len(pos), size=131, replace=False)
     sum_ = len(pos_keep)
     print('Writing')
     for i in pos_keep:
@@ -106,7 +107,7 @@ def main():
 
     print('\n'+'negative random cropped')
     cur_ = 0
-    neg_keep = npr.choice(len(neg), size=1300000, replace=False)
+    neg_keep = npr.choice(len(neg), size=201, replace=False)
     sum_ = len(neg_keep)
     for i in neg_keep:
         line = neg[i]
@@ -138,7 +139,7 @@ def main():
     filename_roi = 'rnet_data_for_bbx.tfrecords'
     print('Writing')
     writer = tf.python_io.TFRecordWriter(filename_roi)
-    pos_keep = npr.choice(len(pos), size=100000, replace=False)
+    pos_keep = npr.choice(len(pos), size=131, replace=False)
     sum_ = len(pos_keep)
     print('Writing')
     for i in pos_keep:
@@ -214,7 +215,7 @@ def main():
 
     print('\n'+'part random cropped')
     cur_ = 0
-    part_keep = npr.choice(len(part), size=100000, replace=False)
+    part_keep = npr.choice(len(part), size=131, replace=False)
     sum_ = len(part_keep)
     for i in part_keep:
         view_bar(cur_, sum_)
