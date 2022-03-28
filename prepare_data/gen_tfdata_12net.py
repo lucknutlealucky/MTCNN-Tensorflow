@@ -26,7 +26,8 @@ import sys
 import random
 
 import cv2
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 import numpy as np
 import numpy.random as npr
 
@@ -74,7 +75,7 @@ def main():
 
     print('\n'+'neg')
     cur_ = 0
-    neg_keep = npr.choice(len(neg), size=1000000, replace=False)
+    neg_keep = npr.choice(len(neg), size=131, replace=False)
     sum_ = len(neg_keep)
     for i in neg_keep:
         line = neg[i]
@@ -129,7 +130,7 @@ def main():
 
     print('\n'+'part')
     cur_ = 0
-    part_keep = npr.choice(len(part), size=300000, replace=False)
+    part_keep = npr.choice(len(part), size=70, replace=False)
     sum_ = len(part_keep)
     for i in part_keep:
         view_bar(cur_, sum_)
