@@ -26,7 +26,8 @@ import sys
 import os
 
 import argparse
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 import cv2
 import numpy as np
 
@@ -40,8 +41,8 @@ def main(args):
 
     image_size = 24
     save_dir = str(image_size)
-    anno_file = 'wider_face_train.txt'
-    im_dir = 'WIDER_train/images/'
+    anno_file = '/content/MTCNN-Tensorflow/prepare_data/wider_face_train.txt'
+    im_dir = '/content/MTCNN-Tensorflow/prepare_data/WIDER_train/images/'
 
     neg_save_dir = save_dir+'/negative'
     pos_save_dir = save_dir+'/positive'
